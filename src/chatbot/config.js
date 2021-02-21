@@ -9,7 +9,7 @@ const config = {
   botName: "LearningBot",
   initialMessages: [
     createChatBotMessage(
-      `Hi there. My name is Five. I am here to help you with all the important matters related to your flat 
+      `Hi there. I am here to help you with all the important matters related to your flat 
     and building.`,
       {
         widget: "options",
@@ -23,7 +23,23 @@ const config = {
   widgets: [
     {
       widgetName: "options",
-      widgetFunc: (props) => <Options {...props} />,
+      widgetFunc: (props) => (
+        <Options
+          options={[
+            {
+              text: "Tell me more",
+              handler: props.actionProvider.handleIntroduction,
+              id: 1,
+            },
+            {
+              text: "Not now",
+              handler: props.actionProvider.handleLater,
+              id: 2,
+              secondary: true,
+            },
+          ]}
+        />
+      ),
     },
     {
       widgetName: "javascriptQuiz",
