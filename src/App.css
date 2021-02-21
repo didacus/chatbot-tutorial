@@ -67,6 +67,7 @@
 .react-chatbot-kit-chat-bot-avatar-container {
   width: 32px;
   height: 32px;
+  background-image: url("./assets/bot-avatar@2x.png");
   border-radius: 50%;
   font-size: 1.2rem;
   margin-right: 0;
@@ -218,4 +219,9 @@
 .react-chatbot-kit-chat-btn-send-icon {
   fill: #fff;
   width: 15px;
+}
+
+/* Avatar */
+.avatar {
+  background-image: url("./assets/bot-avatar@2x.png");
 }

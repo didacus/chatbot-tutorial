@@ -3,6 +3,7 @@ import { createChatBotMessage } from "react-chatbot-kit";
 
 import Options from "../components/Options/Options";
 import Quiz from "../components/Quiz/Quiz";
+import Avatar from "../components/Avatar/Avatar";
 
 const config = {
   botName: "LearningBot",
@@ -11,6 +12,10 @@ const config = {
       widget: "options",
     }),
   ],
+  customComponents: {
+    // Replaces the default bot avatar
+    botAvatar: (props) => <Avatar {...props} />,
+  },
   widgets: [
     {
       widgetName: "options",
