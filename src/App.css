@@ -95,7 +95,7 @@
 }
 
 .chatbot-loader-container {
-  height: 17px;
+  height: 18px;
   display: flex;
   width: 100%;
   justify-content: center;
@@ -167,8 +167,8 @@
 }
 
 .react-chatbot-kit-chat-message-container {
-  height: 90vh;
-  padding: 0 17.5px 10px 17.5px;
+  height: 84vh;
+  padding: 0 17.5px 50px 17.5px;
   overflow: scroll;
 }
 
