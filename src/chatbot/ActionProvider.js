@@ -20,6 +20,13 @@ class ActionProvider {
     this.addMessageToState(message);
   };
 
+  handleIntroduction = () => {
+    const message = this.createChatBotMessage("Sure thing.", {
+      delay: 1000,
+    });
+    this.addMessageToState(message);
+  };
+
   addMessageToState = (message) => {
     this.setState((prevState) => ({
       ...prevState,

@@ -1,9 +1,14 @@
 import React from "react";
+import "./Avatar.css"
 
-import "./Avatar.css";
-
-const Avatar = (props) => {
-  return <div className="avatar"/>
+const ChatbotMessageAvatar = () => {
+  return (
+    <div className="react-chatbot-kit-chat-bot-avatar">
+      <div className="react-chatbot-kit-chat-bot-avatar-container">
+        {/* <p className="react-chatbot-kit-chat-bot-avatar-letter">B</p> */}
+      </div>
+    </div>
+  );
 };
 
-export default Avatar;
+export default ChatbotMessageAvatar;

@@ -225,8 +225,3 @@
   fill: #fff;
   width: 15px;
 }
-
-/* Avatar */
-.avatar {
-  background-image: url("./assets/bot-avatar@2x.png");
-}

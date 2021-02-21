@@ -8,9 +8,13 @@ import Avatar from "../components/Avatar/Avatar";
 const config = {
   botName: "LearningBot",
   initialMessages: [
-    createChatBotMessage(`Hello. What do you want to learn`, {
-      widget: "options",
-    }),
+    createChatBotMessage(
+      `Hi there. My name is Five. I am here to help you with all the important matters related to your flat 
+    and building.`,
+      {
+        widget: "options",
+      }
+    ),
   ],
   customComponents: {
     // Replaces the default bot avatar
