@@ -42,6 +42,26 @@ const config = {
       ),
     },
     {
+      widgetName: "createAccount",
+      widgetFunc: (props) => (
+        <Options
+          options={[
+            {
+              text: "Yes, I am",
+              handler: props.actionProvider.handleName,
+              id: 1,
+            },
+            {
+              text: "Maybe later",
+              handler: props.actionProvider.handleLater,
+              id: 2,
+              secondary: true,
+            },
+          ]}
+        />
+      ),
+    },
+    {
       widgetName: "javascriptQuiz",
       widgetFunc: (props) => <Quiz {...props} />,
       props: {

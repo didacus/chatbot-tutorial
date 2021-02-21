@@ -1,7 +1,8 @@
 class ActionProvider {
-  constructor(createChatBotMessage, setStateFunc) {
+  constructor(createChatBotMessage, setStateFunc, createClientMessage) {
     this.createChatBotMessage = createChatBotMessage;
     this.setState = setStateFunc;
+    this.createClientMessage = createClientMessage;
   }
 
   greet = () => {
@@ -40,6 +41,7 @@ class ActionProvider {
     this.addMessageToState(message);
   };
 
+  //Intro
   handleIntroduction = () => {
     const msg1 = this.createChatBotMessage("Sure thing.", {
       delay: 1000,
@@ -57,11 +59,33 @@ class ActionProvider {
     const msg3 = this.createChatBotMessage("Interested?", {
       delay: 3000,
       withAvatar: true,
+      widget: "createAccount",
     });
 
     this.setState((prevState) => ({
       ...prevState,
       messages: [...prevState.messages, msg1, msg2, msg3],
+    }));
+  };
+
+  //Name
+  handleName = () => {
+    const msg1 = this.createChatBotMessage("Great.", {
+      delay: 1000,
+      withAvatar: true,
+    });
+
+    const msg2 = this.createChatBotMessage(
+      "Let’s get to know each other. What’s your name?",
+      {
+        delay: 2000,
+        withAvatar: true,
+      }
+    );
+
+    this.setState((prevState) => ({
+      ...prevState,
+      messages: [...prevState.messages, msg1, msg2],
     }));
   };
 
