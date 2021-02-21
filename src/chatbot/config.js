@@ -6,7 +6,7 @@ import Quiz from "../components/Quiz/Quiz";
 import Avatar from "../components/Avatar/Avatar";
 
 const config = {
-  botName: "LearningBot",
+  botName: "Doleron Concierge",
   initialMessages: [
     createChatBotMessage(
       `Hi there. I am here to help you with all the important matters related to your flat 
@@ -42,13 +42,33 @@ const config = {
       ),
     },
     {
-      widgetName: "createAccount",
+      widgetName: "askName",
       widgetFunc: (props) => (
         <Options
           options={[
             {
               text: "Yes, I am",
               handler: props.actionProvider.handleName,
+              id: 1,
+            },
+            {
+              text: "Maybe later",
+              handler: props.actionProvider.handleLater,
+              id: 2,
+              secondary: true,
+            },
+          ]}
+        />
+      ),
+    },
+    {
+      widgetName: "askTerms",
+      widgetFunc: (props) => (
+        <Options
+          options={[
+            {
+              text: "Accept Terms & Concitions",
+              handler: props.actionProvider.handleCompletion,
               id: 1,
             },
             {

@@ -5,6 +5,14 @@ class ActionProvider {
     this.createClientMessage = createClientMessage;
   }
 
+  handleUserMessage = (chatMessage) => {
+    console.log(chatMessage);
+    this.setState((state) => {
+      console.log("this state", state);
+      return state;
+    });
+  };
+
   greet = () => {
     const message = this.createChatBotMessage(
       `Hi there. I am here to help you with all the important matters related to your flat 
@@ -59,7 +67,7 @@ class ActionProvider {
     const msg3 = this.createChatBotMessage("Interested?", {
       delay: 3000,
       withAvatar: true,
-      widget: "createAccount",
+      widget: "askName",
     });
 
     this.setState((prevState) => ({
@@ -77,6 +85,85 @@ class ActionProvider {
 
     const msg2 = this.createChatBotMessage(
       "Let’s get to know each other. What’s your name?",
+      {
+        delay: 2000,
+        withAvatar: true,
+      }
+    );
+
+    this.setState((prevState) => ({
+      ...prevState,
+      messages: [...prevState.messages, msg1, msg2],
+    }));
+  };
+
+  //Number
+  handleNumber = () => {
+    const msg1 = this.createChatBotMessage(
+      "Thank you. To better serve you I need a few more details about yourself and where you live.",
+      {
+        delay: 1000,
+        withAvatar: true,
+      }
+    );
+
+    const msg2 = this.createChatBotMessage(
+      "Could you tell me your flat number? All this information will be kept private and safe.",
+      {
+        delay: 2000,
+        withAvatar: true,
+      }
+    );
+
+    this.setState((prevState) => ({
+      ...prevState,
+      messages: [...prevState.messages, msg1, msg2],
+    }));
+  };
+
+  //Email
+  handleEmail = () => {
+    const msg1 = this.createChatBotMessage(
+      "Great, thank you. What about your email address? I will use it to sign you in next time.",
+      {
+        delay: 1000,
+        withAvatar: true,
+      }
+    );
+    this.addMessageToState(msg1);
+  };
+
+  //Terms & Conditions
+  handleTerms = () => {
+    const msg1 = this.createChatBotMessage("Thank you. We are almost done.", {
+      delay: 1000,
+      withAvatar: true,
+    });
+
+    const msg2 = this.createChatBotMessage(
+      "Before I can setup your services I need you to read and agree with Terms & Conditions.",
+      {
+        delay: 2000,
+        withAvatar: true,
+        widget: "askTerms",
+      }
+    );
+
+    this.setState((prevState) => ({
+      ...prevState,
+      messages: [...prevState.messages, msg1, msg2],
+    }));
+  };
+
+  //Done
+  handleCompletion = () => {
+    const msg1 = this.createChatBotMessage("Thank you. We are almost done.", {
+      delay: 1000,
+      withAvatar: true,
+    });
+
+    const msg2 = this.createChatBotMessage(
+      "Before I can setup your services I need you to read and agree with Terms & Conditions.",
       {
         delay: 2000,
         withAvatar: true,
