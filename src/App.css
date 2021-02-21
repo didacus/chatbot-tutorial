@@ -113,26 +113,31 @@
 }
 
 .react-chatbot-kit-chat-bot-loading-icon-container {
-  height: 17px;
-  width: 25px;
+  height: 8px;
+  width: 26px;
 }
 
 .chatbot-loader-container {
+  height: 17px;
   display: flex;
   width: 100%;
   justify-content: center;
+  transform: scale(0.75);
 }
 
 #chatbot-loader #chatbot-loader-dot1 {
+  fill: gray;
   animation: load 1s infinite;
 }
 
 #chatbot-loader #chatbot-loader-dot2 {
+  fill: gray;
   animation: load 1s infinite;
   animation-delay: 0.2s;
 }
 
 #chatbot-loader #chatbot-loader-dot3 {
+  fill: gray;
   animation: load 1s infinite;
   animation-delay: 0.4s;
 }
