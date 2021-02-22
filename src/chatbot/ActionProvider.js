@@ -139,7 +139,7 @@ class ActionProvider {
   //Email
   handleEmail = () => {
     const msg1 = this.createChatBotMessage(
-      `Flat ${this.addUserFlat} Great, thank you. What about your email address? I will use it to sign you in next time.`,
+      `Flat ${this.addUserFlat} great, thank you. What about your email address? I will use it to sign you in next time.`,
       {
         delay: 1000,
         withAvatar: true,
