@@ -9,16 +9,9 @@ class MessageParser {
     if (message) {
       const lowercase = message.toLowerCase();
 
+      //Catch all
       if (lowercase) {
-        this.actionProvider.handleNumber();
-      }
-
-      if (typeof lowercase == "number") {
-        this.actionProvider.handleEmail();
-      }
-
-      if (lowercase.includes("@")) {
-        this.actionProvider.handleTerms();
+        this.actionProvider.handleUserMessage(message);
       }
 
       if (
@@ -29,8 +22,8 @@ class MessageParser {
         this.actionProvider.greet();
       }
 
-      if (lowercase.includes("yes")) {
-        this.actionProvider.handleJavascriptQuiz();
+      if (lowercase.includes("concierge")) {
+        this.actionProvider.handleConcierge();
       }
     }
   }

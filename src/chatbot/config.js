@@ -87,7 +87,7 @@ const config = {
       props: {
         questions: [
           {
-            question: "What is closure?",
+            question: "Hi there. What can I do for you today?",
             answer:
               "Closure is a way for a function to retain access to it's enclosing function scope after the execution of that function is finished.",
             id: 1,

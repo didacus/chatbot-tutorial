@@ -3,12 +3,33 @@ class ActionProvider {
     this.createChatBotMessage = createChatBotMessage;
     this.setState = setStateFunc;
     this.createClientMessage = createClientMessage;
+    this.addUserName = "";
+    this.addUserFlat = "";
+    this.addUserEmail = "";
+    this.handleFlat = this.handleFlat.bind(this);
+    this.handleEmail = this.handleEmail.bind(this);
+    this.handleTerms = this.handleTerms.bind(this);
   }
 
-  handleUserMessage = (chatMessage) => {
-    console.log(chatMessage);
+  handleUserMessage = () => {
+    var lastMessage = "";
     this.setState((state) => {
-      console.log("this state", state);
+      console.log("State is", state.messages, "Type", state.messages.type);
+
+      lastMessage = state.messages[state.messages.length - 2].content;
+      console.log("Last", lastMessage);
+
+      switch (lastMessage) {
+        case "name":
+          this.handleFlat();
+          break;
+        case "flat":
+          this.handleEmail();
+          break;
+        case "email":
+          this.handleTerms();
+      }
+
       return state;
     });
   };
@@ -26,17 +47,7 @@ class ActionProvider {
     this.addMessageToState(message);
   };
 
-  // handleJavascriptQuiz = () => {
-  //   const message = this.createChatBotMessage(
-  //     "Fantastic. Here is your quiz. Good luck!",
-  //     {
-  //       widget: "javascriptQuiz",
-  //     }
-  //   );
-
-  //   this.addMessageToState(message);
-  // };
-
+  //Handle later answers
   handleLater = () => {
     const message = this.createChatBotMessage(
       "No problem. Say hello if 👋 you need me.",
@@ -88,6 +99,7 @@ class ActionProvider {
       {
         delay: 2000,
         withAvatar: true,
+        content: "name",
       }
     );
 
@@ -97,10 +109,10 @@ class ActionProvider {
     }));
   };
 
-  //Number
-  handleNumber = () => {
+  //Flat
+  handleFlat = () => {
     const msg1 = this.createChatBotMessage(
-      "Thank you. To better serve you I need a few more details about yourself and where you live.",
+      `Thank you ${this.addUserName}. To better serve you I need a few more details about yourself and where you live.`,
       {
         delay: 1000,
         withAvatar: true,
@@ -112,6 +124,7 @@ class ActionProvider {
       {
         delay: 2000,
         withAvatar: true,
+        content: "flat",
       }
     );
 
@@ -128,6 +141,7 @@ class ActionProvider {
       {
         delay: 1000,
         withAvatar: true,
+        content: "email",
       }
     );
     this.addMessageToState(msg1);
@@ -157,13 +171,34 @@ class ActionProvider {
 
   //Done
   handleCompletion = () => {
-    const msg1 = this.createChatBotMessage("Thank you. We are almost done.", {
+    const msg1 = this.createChatBotMessage("All done!", {
       delay: 1000,
       withAvatar: true,
     });
 
     const msg2 = this.createChatBotMessage(
-      "Before I can setup your services I need you to read and agree with Terms & Conditions.",
+      "You can request my help anytime by typing `concierge`. I will tell you all the help I can provide. Give it a go!",
+      {
+        delay: 2000,
+        withAvatar: true,
+      }
+    );
+
+    this.setState((prevState) => ({
+      ...prevState,
+      messages: [...prevState.messages, msg1, msg2],
+    }));
+  };
+
+  //Concierge
+  handleConcierge = () => {
+    const msg1 = this.createChatBotMessage("All done!", {
+      delay: 1000,
+      withAvatar: true,
+    });
+
+    const msg2 = this.createChatBotMessage(
+      "You can request my help anytime by typing `concierge`. I will tell you all the help I can provide. Give it a go!",
       {
         delay: 2000,
         withAvatar: true,
