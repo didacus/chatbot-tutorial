@@ -6,7 +6,7 @@ import Quiz from "../components/Quiz/Quiz";
 import Avatar from "../components/Avatar/Avatar";
 
 const config = {
-  botName: "Doleron Concierge",
+  botName: "Johnny 5",
   initialMessages: [
     createChatBotMessage(
       `Hi there. I am here to help you with all the important matters related to your flat 
