@@ -14,20 +14,22 @@ class ActionProvider {
   handleUserMessage = () => {
     var lastMessage = "";
     this.setState((state) => {
-      console.log("State is", state.messages, "Type", state.messages.type);
-
       lastMessage = state.messages[state.messages.length - 2].content;
-      console.log("Last", lastMessage);
 
       switch (lastMessage) {
         case "name":
+          this.addUserName = state.messages[state.messages.length - 1].message;
           this.handleFlat();
           break;
         case "flat":
+          this.addUserFlat = state.messages[state.messages.length - 1].message;
           this.handleEmail();
           break;
         case "email":
+          this.addUserEmail = state.messages[state.messages.length - 1].message;
           this.handleTerms();
+          break;
+        default:
       }
 
       return state;
@@ -120,7 +122,7 @@ class ActionProvider {
     );
 
     const msg2 = this.createChatBotMessage(
-      "Could you tell me your flat number? All this information will be kept private and safe.",
+      `Could you tell me your flat number? All this information will be kept private and safe.`,
       {
         delay: 2000,
         withAvatar: true,
@@ -137,7 +139,7 @@ class ActionProvider {
   //Email
   handleEmail = () => {
     const msg1 = this.createChatBotMessage(
-      "Great, thank you. What about your email address? I will use it to sign you in next time.",
+      `Flat ${this.addUserFlat} Great, thank you. What about your email address? I will use it to sign you in next time.`,
       {
         delay: 1000,
         withAvatar: true,
