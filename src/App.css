@@ -11,8 +11,8 @@
 /* Chat */
 .react-chatbot-kit-chat-container {
   position: relative !important;
-  width: 100vw !important;
-  /* height: 84vh!important; */
+  width: 90vw !important;
+  height: 90vh !important;
 }
 
 .react-chatbot-kit-chat-inner-container {
@@ -44,7 +44,7 @@
 }
 
 .react-chatbot-kit-chat-message-container {
-  height: 84vh !important;
+  height: 71vh !important;
   padding: 0 17.5px 112px 17.5px !important;
   overflow: scroll !important;
 }
@@ -155,7 +155,7 @@
   height: 0 !important;
   border-top: 8px solid transparent !important;
   border-bottom: 8px solid transparent !important;
-  border-right: 8px solid #2898ec !important;
+  border-right: 8px solid #facc15 !important;
   position: absolute !important;
   left: -7px !important;
   top: 13px !important;
