@@ -17,12 +17,12 @@ class MessageParser {
       if (
         lowercase.includes("hello") ||
         lowercase.includes("hi") ||
-        lowercase.includes("help")
+        lowercase.includes("hey")
       ) {
         this.actionProvider.greet();
       }
 
-      if (lowercase.includes("concierge")) {
+      if (lowercase.includes("help") || lowercase.includes("concierge")) {
         this.actionProvider.handleConcierge();
       }
     }

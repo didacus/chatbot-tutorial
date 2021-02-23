@@ -6,15 +6,19 @@ class ActionProvider {
     this.addUserName = "";
     this.addUserFlat = "";
     this.addUserEmail = "";
+    this.addVisitorName = "";
     this.handleFlat = this.handleFlat.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
     this.handleTerms = this.handleTerms.bind(this);
+    this.handleCamera = this.handleCamera.bind(this);
   }
 
   handleUserMessage = () => {
     var lastMessage = "";
     this.setState((state) => {
       lastMessage = state.messages[state.messages.length - 2].content;
+
+      console.log(lastMessage);
 
       switch (lastMessage) {
         case "name":
@@ -29,6 +33,11 @@ class ActionProvider {
           this.addUserEmail = state.messages[state.messages.length - 1].message;
           this.handleTerms();
           break;
+        case "visitorName":
+          this.addVisitorName =
+            state.messages[state.messages.length - 1].message;
+          this.handleCamera();
+          break;
         default:
       }
 
@@ -36,6 +45,21 @@ class ActionProvider {
     });
   };
 
+  // Task finished
+  handleDone = () => {
+    const msg1 = this.createChatBotMessage("Thank you. That's it for now.", {
+      delay: 1000,
+      withAvatar: true,
+      widget: "askDone",
+    });
+
+    this.setState((prevState) => ({
+      ...prevState,
+      messages: [...prevState.messages, msg1],
+    }));
+  };
+
+  // Greet
   greet = () => {
     const message = this.createChatBotMessage(
       `Hi there. I am here to help you with all the important matters related to your flat 
@@ -43,7 +67,7 @@ class ActionProvider {
       {
         delay: 2000,
         withAvatar: true,
-        widget: "options",
+        widget: "askGreet",
       }
     );
     this.addMessageToState(message);
@@ -179,7 +203,7 @@ class ActionProvider {
     });
 
     const msg2 = this.createChatBotMessage(
-      "You can request my help anytime by typing `concierge`. I will tell you all the help I can provide. Give it a go!",
+      "You can request my services by typing ` help `. I will tell you all the help I can provide. Give it a go!",
       {
         delay: 2000,
         withAvatar: true,
@@ -199,6 +223,90 @@ class ActionProvider {
       withAvatar: true,
       widget: "askConcierge",
     });
+
+    this.setState((prevState) => ({
+      ...prevState,
+      messages: [...prevState.messages, msg1],
+    }));
+  };
+
+  //Visitor
+  handleVisitor = () => {
+    const msg1 = this.createChatBotMessage(
+      "In order to keep everyone save, we required a photo identification for regular visitors such as cleaners and babysitters.",
+      {
+        delay: 1000,
+        withAvatar: true,
+      }
+    );
+
+    const msg2 = this.createChatBotMessage(
+      "Would you like to add a regular visitor?",
+      {
+        delay: 2000,
+        withAvatar: true,
+        widget: "askVisitors",
+      }
+    );
+
+    this.setState((prevState) => ({
+      ...prevState,
+      messages: [...prevState.messages, msg1, msg2],
+    }));
+  };
+
+  // Visitor name
+  handleVisitorName = () => {
+    const msg1 = this.createChatBotMessage(
+      "Okay. What is the visitor's full name?",
+      {
+        delay: 1000,
+        withAvatar: true,
+        content: "visitorName",
+      }
+    );
+
+    this.setState((prevState) => ({
+      ...prevState,
+      messages: [...prevState.messages, msg1],
+    }));
+  };
+
+  // Camera
+  handleCamera = () => {
+    const msg1 = this.createChatBotMessage(
+      "Let’s get a picture of a valid ID document.",
+      {
+        delay: 1000,
+        withAvatar: true,
+      }
+    );
+
+    const msg2 = this.createChatBotMessage(
+      `These can be passports, ID cards or any kind of documentation that clearly shows ${this.addVisitorName}'s full name and photo.`,
+      {
+        delay: 2000,
+        withAvatar: true,
+        widget: "askIOS",
+      }
+    );
+
+    this.setState((prevState) => ({
+      ...prevState,
+      messages: [...prevState.messages, msg1, msg2],
+    }));
+  };
+
+  // Preview
+  handlePreview = () => {
+    const msg1 = this.createChatBotMessage(
+      `Is the name and face are clearly visible?`,
+      {
+        delay: 1000,
+        withAvatar: true,
+        widget: "askPreview",
+      }
+    );
 
     this.setState((prevState) => ({
       ...prevState,

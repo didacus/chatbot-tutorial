@@ -5,6 +5,12 @@ import Options from "../components/Options/Options";
 import Quiz from "../components/Quiz/Quiz";
 import Avatar from "../components/Avatar/Avatar";
 import Menu from "../components/Menu/Menu";
+import Image from "../components/Image/Image";
+
+import AccountIc from "../assets/ic-account.png";
+import AcitivityIc from "../assets/ic-activity.png";
+import ChatIc from "../assets/ic-chat.png";
+import VisitorIc from "../assets/ic-visitor.png";
 
 const config = {
   botName: "Johnny 5",
@@ -13,7 +19,7 @@ const config = {
       `Hi there. I am here to help you with all the important matters related to your flat 
     and building.`,
       {
-        widget: "options",
+        widget: "askGreet",
       }
     ),
   ],
@@ -23,23 +29,26 @@ const config = {
   },
   widgets: [
     {
-      widgetName: "options",
+      widgetName: "askGreet",
       widgetFunc: (props) => (
-        <Options
-          options={[
-            {
-              text: "Tell me more",
-              handler: props.actionProvider.handleIntroduction,
-              id: 1,
-            },
-            {
-              text: "Not now",
-              handler: props.actionProvider.handleLater,
-              id: 2,
-              secondary: true,
-            },
-          ]}
-        />
+        <>
+          <Image image="https://media.giphy.com/media/hWpjRVzwSMy7QvM6Ee/giphy.gif" />
+          <Options
+            options={[
+              {
+                text: "Tell me more",
+                handler: props.actionProvider.handleIntroduction,
+                id: 1,
+              },
+              {
+                text: "Not now",
+                handler: props.actionProvider.handleLater,
+                id: 2,
+                secondary: true,
+              },
+            ]}
+          />
+        </>
       ),
     },
     {
@@ -88,26 +97,104 @@ const config = {
         <Menu
           options={[
             {
-              text: "Manage regular visitors",
-              handler: props.actionProvider.handleCompletion,
+              text: "Regular visitors",
+              handler: props.actionProvider.handleVisitor,
+              icon: VisitorIc,
               id: 1,
             },
             {
               text: "Activity log",
               handler: props.actionProvider.handleCompletion,
+              icon: AcitivityIc,
               id: 2,
             },
             {
               text: "Chat with a human",
               handler: props.actionProvider.handleCompletion,
+              icon: ChatIc,
               id: 3,
             },
             {
               text: "Account",
               handler: props.actionProvider.handleCompletion,
+              icon: AccountIc,
               id: 4,
             },
           ]}
+        />
+      ),
+    },
+    {
+      widgetName: "askVisitors",
+      widgetFunc: (props) => (
+        <Options
+          options={[
+            {
+              text: "Yes",
+              handler: props.actionProvider.handleVisitorName,
+              id: 1,
+            },
+            {
+              text: "Maybe later",
+              handler: props.actionProvider.handleVisitorName,
+              id: 2,
+              secondary: true,
+            },
+          ]}
+        />
+      ),
+    },
+    {
+      widgetName: "askIOS",
+      widgetFunc: (props) => (
+        <Menu
+          options={[
+            {
+              text: "Take a photo",
+              handler: props.actionProvider.handlePreview,
+              icon: VisitorIc,
+              id: 1,
+            },
+            {
+              text: "From the library",
+              handler: props.actionProvider.handlePreview,
+              icon: AcitivityIc,
+              id: 2,
+            },
+          ]}
+        />
+      ),
+    },
+    {
+      widgetName: "askPreview",
+      widgetFunc: (props) => (
+        <>
+          <Image
+            image={"https://media.giphy.com/media/Fh9jhYLDLo87u/giphy.gif"}
+          />
+          <Options
+            options={[
+              {
+                text: "Good to go",
+                handler: props.actionProvider.handleDone,
+                id: 1,
+              },
+              {
+                text: "Retake",
+                handler: props.actionProvider.handleDone,
+                id: 2,
+                secondary: true,
+              },
+            ]}
+          />
+        </>
+      ),
+    },
+    {
+      widgetName: "askDone",
+      widgetFunc: (props) => (
+        <Image
+          image={"https://media.giphy.com/media/l0Iyl55kTeh71nTXy/giphy.gif"}
         />
       ),
     },
