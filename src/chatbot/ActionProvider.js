@@ -194,22 +194,15 @@ class ActionProvider {
 
   //Concierge
   handleConcierge = () => {
-    const msg1 = this.createChatBotMessage("All done!", {
+    const msg1 = this.createChatBotMessage("How can I help you?", {
       delay: 1000,
       withAvatar: true,
+      widget: "askConcierge",
     });
-
-    const msg2 = this.createChatBotMessage(
-      "You can request my help anytime by typing `concierge`. I will tell you all the help I can provide. Give it a go!",
-      {
-        delay: 2000,
-        withAvatar: true,
-      }
-    );
 
     this.setState((prevState) => ({
       ...prevState,
-      messages: [...prevState.messages, msg1, msg2],
+      messages: [...prevState.messages, msg1],
     }));
   };
 

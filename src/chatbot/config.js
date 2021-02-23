@@ -4,6 +4,7 @@ import { createChatBotMessage } from "react-chatbot-kit";
 import Options from "../components/Options/Options";
 import Quiz from "../components/Quiz/Quiz";
 import Avatar from "../components/Avatar/Avatar";
+import Menu from "../components/Menu/Menu";
 
 const config = {
   botName: "Johnny 5",
@@ -67,7 +68,7 @@ const config = {
         <Options
           options={[
             {
-              text: "Accept Terms & Concitions",
+              text: "Accept T&C's",
               handler: props.actionProvider.handleCompletion,
               id: 1,
             },
@@ -76,6 +77,35 @@ const config = {
               handler: props.actionProvider.handleLater,
               id: 2,
               secondary: true,
+            },
+          ]}
+        />
+      ),
+    },
+    {
+      widgetName: "askConcierge",
+      widgetFunc: (props) => (
+        <Menu
+          options={[
+            {
+              text: "Manage regular visitors",
+              handler: props.actionProvider.handleCompletion,
+              id: 1,
+            },
+            {
+              text: "Activity log",
+              handler: props.actionProvider.handleCompletion,
+              id: 2,
+            },
+            {
+              text: "Chat with a human",
+              handler: props.actionProvider.handleCompletion,
+              id: 3,
+            },
+            {
+              text: "Account",
+              handler: props.actionProvider.handleCompletion,
+              id: 4,
             },
           ]}
         />
