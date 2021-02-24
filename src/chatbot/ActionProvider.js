@@ -47,15 +47,23 @@ class ActionProvider {
 
   // Task finished
   handleDone = () => {
-    const msg1 = this.createChatBotMessage("Thank you. That's it for now.", {
+    const msg1 = this.createChatBotMessage("Thank you.", {
       delay: 1000,
       withAvatar: true,
       widget: "askDone",
     });
 
+    const msg2 = this.createChatBotMessage(
+      "Say ` help ` if you need my services.",
+      {
+        delay: 2000,
+        withAvatar: true,
+      }
+    );
+
     this.setState((prevState) => ({
       ...prevState,
-      messages: [...prevState.messages, msg1],
+      messages: [...prevState.messages, msg1, msg2],
     }));
   };
 
@@ -305,6 +313,23 @@ class ActionProvider {
         delay: 1000,
         withAvatar: true,
         widget: "askPreview",
+      }
+    );
+
+    this.setState((prevState) => ({
+      ...prevState,
+      messages: [...prevState.messages, msg1],
+    }));
+  };
+
+  // Added visitor
+  handleAnotherVisitor = () => {
+    const msg1 = this.createChatBotMessage(
+      `Thank you. I added your new visitor to the system. Would you like to add another?`,
+      {
+        delay: 1000,
+        withAvatar: true,
+        widget: "askAnotherVisitor",
       }
     );
 

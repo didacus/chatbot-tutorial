@@ -175,12 +175,34 @@ const config = {
           <Options
             options={[
               {
-                text: "Good to go",
-                handler: props.actionProvider.handleDone,
+                text: "Yes, save it",
+                handler: props.actionProvider.handleAnotherVisitor,
                 id: 1,
               },
               {
-                text: "Retake",
+                text: "No, retake",
+                handler: props.actionProvider.handleAnotherVisitor,
+                id: 2,
+                secondary: true,
+              },
+            ]}
+          />
+        </>
+      ),
+    },
+    {
+      widgetName: "askAnotherVisitor",
+      widgetFunc: (props) => (
+        <>
+          <Options
+            options={[
+              {
+                text: "Yes, add another",
+                handler: props.actionProvider.handleVisitorName,
+                id: 1,
+              },
+              {
+                text: "That's all for now",
                 handler: props.actionProvider.handleDone,
                 id: 2,
                 secondary: true,
